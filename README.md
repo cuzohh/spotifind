@@ -2,25 +2,25 @@
 
 project about music recommendations. it has a group notebook, a quick data check, and a simple demo that finds songs with similar sound details.
 
-## what's in here
+## files and folders
 
 - `cleaned_dataset.csv` has song details, sound features, Spotify streams, and YouTube views and likes.
-- `Spotifind.ipynb` is the main project notebook for the group.
-- `data_audit.ipynb` takes a quick look at missing values, repeated tracks, and a few charts.
-- `similar_songs_demo.py` finds a few tracks that sound similar to a song you choose.
-- `possible project questions.md` has some ideas for the project question.
+- `Spotifind.ipynb` is the main project notebook for the group. it stays in the project folder.
+- `docs/possible project questions.md` has ideas for the project question.
+- `notebooks/data_audit.ipynb` checks for missing values and repeated tracks, then makes a few charts.
+- `scripts/similar_songs_demo.py` finds tracks that sound similar to a song you choose.
 - `LICENSE` has the license information for this project.
 
 ## try the similar songs demo
 
-you need python and pandas. from the project folder, run:
+you need python and pandas. open a terminal in the project folder and run:
 
 ```sh
 python -m pip install pandas
-python similar_songs_demo.py
+python scripts/similar_songs_demo.py
 ```
 
-the demo starts with "feel good inc." by gorillaz. to try another song, change the artist and track name near the bottom of `similar_songs_demo.py`:
+the demo starts with "feel good inc." by gorillaz. to try another song, change the artist and track name near the bottom of `scripts/similar_songs_demo.py`:
 
 ```python
 recommendations = recommend_songs("Gorillaz", "Feel Good Inc.")
@@ -32,7 +32,7 @@ the demo compares danceability, energy, acousticness, valence, tempo, and loudne
 
 ## open the data check
 
-open `data_audit.ipynb` in jupyter or your notebook editor and run the cells from the project folder. it uses pandas and matplotlib:
+open `notebooks/data_audit.ipynb` in jupyter or your notebook editor. keep the project folder as the working folder so the notebook can find the csv. it uses pandas and matplotlib:
 
 ```sh
 python -m pip install pandas matplotlib
