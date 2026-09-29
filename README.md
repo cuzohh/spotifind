@@ -1,6 +1,6 @@
 # spotifind
 
-this is a small class project about music recommendations. it has a group notebook, a quick data check, and a simple demo that finds songs with similar sound details.
+project about music recommendations. it has a group notebook, a quick data check, and a simple demo that finds songs with similar sound details.
 
 ## what's in here
 
