@@ -20,13 +20,11 @@ python -m pip install pandas
 python scripts/similar_songs_demo.py
 ```
 
-the demo starts with "feel good inc." by gorillaz. to try another song, change the artist and track name near the bottom of `scripts/similar_songs_demo.py`:
+the demo asks for an artist name and song name. enter them as they appear in the csv and it will show five similar tracks. to get three instead, add `3` as the third value in the call near the bottom of `scripts/similar_songs_demo.py`:
 
 ```python
-recommendations = recommend_songs("Gorillaz", "Feel Good Inc.")
+recommendations = recommend_songs(artist_name, track_name, 3)
 ```
-
-you can also change the number of suggestions. for example, `recommend_songs("Artist", "Song", 3)` asks for three.
 
 the demo compares danceability, energy, acousticness, valence, tempo, and loudness. it puts them on the same scale, then finds tracks with the closest values. this finds songs that are similar in the data. it can't tell us if someone will actually like them.
 

@@ -44,6 +44,10 @@ def recommend_songs(artist_name, track_name, number=5):
     return recommendations.sort_values("distance").head(number)
 
 
-# try a song from the dataset
-recommendations = recommend_songs("Gorillaz", "Feel Good Inc.")
-print(recommendations[["Artist", "Track"]].to_string(index=False))
+# type a song from the dataset
+artist_name = input("artist name: ").strip()
+track_name = input("song name: ").strip()
+recommendations = recommend_songs(artist_name, track_name)
+
+if recommendations is not None:
+    print(recommendations[["Artist", "Track"]].to_string(index=False))
