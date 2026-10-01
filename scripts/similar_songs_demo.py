@@ -33,21 +33,36 @@ def recommend_songs(artist_name, track_name, number=5):
         return
 
     # compare every track with the song we picked; a smaller distance means a closer match
+    song = matches.iloc[0]
     song_number = matches.index[0]
     distances = ((scaled_features - scaled_features.iloc[song_number]) ** 2).sum(axis=1) ** 0.5
 
-    recommendations = songs[["Artist", "Track"]].copy()
+    recommendations = songs[["Artist", "Track", "Album", "Title"]].copy()
     recommendations["distance"] = distances
-    recommendations = recommendations.drop_duplicates(subset=["Artist", "Track"])
-    recommendations = recommendations.drop(song_number)
+
+    # don't recommend the song we started with, even if it has several artist rows
+    recommendations = recommendations[
+        (recommendations["Track"] != song["Track"])
+        | (recommendations["Album"] != song["Album"])
+        | (recommendations["Title"] != song["Title"])
+    ]
+
+    # the same song can have one row for each artist in the dataset
+    recommendations = recommendations.drop_duplicates(
+        subset=["Artist", "Track", "Album", "Title"]
+    )
+    recommendations = recommendations.groupby(
+        ["Track", "Album", "Title"], as_index=False
+    ).agg({"Artist": ", ".join, "distance": "min"})
 
     return recommendations.sort_values("distance").head(number)
 
 
-# type a song from the dataset
-artist_name = input("artist name: ").strip()
-track_name = input("song name: ").strip()
-recommendations = recommend_songs(artist_name, track_name)
+if __name__ == "__main__":
+    # type a song from the dataset
+    artist_name = input("artist name: ").strip()
+    track_name = input("song name: ").strip()
+    recommendations = recommend_songs(artist_name, track_name)
 
-if recommendations is not None:
-    print(recommendations[["Artist", "Track"]].to_string(index=False))
+    if recommendations is not None:
+        print(recommendations[["Artist", "Track"]].to_string(index=False))

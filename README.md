@@ -7,9 +7,22 @@ project about music recommendations. it has a group notebook, a quick data check
 - `cleaned_dataset.csv` has song details, sound features, Spotify streams, and YouTube views and likes.
 - `Spotifind.ipynb` is the main project notebook for the group. it stays in the project folder.
 - `docs/possible project questions.md` has ideas for the project question.
+- `docs/similar songs app.md` explains how the simple app works.
 - `notebooks/data_audit.ipynb` checks for missing values and repeated tracks, then makes a few charts.
 - `scripts/similar_songs_demo.py` finds tracks that sound similar to a song you choose.
+- `scripts/similar_songs_app.py` is a small app for picking a song and seeing recommendations.
 - `LICENSE` has the license information for this project.
+
+## try the simple app
+
+you need python, pandas, and streamlit. open a terminal in the project folder and run:
+
+```sh
+python -m pip install pandas streamlit
+streamlit run scripts/similar_songs_app.py
+```
+
+the artist and song boxes let you search through choices from the csv as you type. pick an artist first, then pick one of that artist's songs. the recommendations show up after you pick a song. you can only choose artists and songs that are in the dataset. see [the app guide](docs/similar%20songs%20app.md) for more detail.
 
 ## try the similar songs demo
 
